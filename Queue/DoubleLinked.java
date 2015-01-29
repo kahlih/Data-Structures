@@ -12,10 +12,6 @@ class Node{
     public void displayNode() {
         System.out.print("[" + data + "], ");
     }
-
-    public int getNode(){
-        return data;
-    }
 }
 
 class DoubleLinkedList {
