@@ -1,9 +1,41 @@
-7
-2
-15
-5
-3
-9
-6
-1
-4
+int collatz_eval (int i, int j) {
+    assert(i > 0);
+    assert(j > 0);
+    int cycle_count = 0;
+    int counter = i;
+    int max = 1;
+    cache[1] = 1;
+
+    if (j<i)
+    {
+        counter = j;
+        j = i;
+    }
+    while (counter != (j+1)){
+        if (cache[counter] == 0){
+            int num = counter;
+            while (num >= 1){
+                if(cache[num] != 0){
+                    cycle_count += cache[num];
+                    cache[counter] = cycle_count;
+                    break;
+                }
+                if (num%2 == 0){
+                    ++cycle_count;
+                    num = num / 2;
+                }
+                else{
+                    cycle_count += 2;
+                    num = (3*num + 1) / 2;
+                }
+            }
+        }
+
+        if(cache[counter] > max)
+            max = cache[counter];
+    }
+
+        ++counter;
+        cycle_count = 0;
+
+    return max;}
